@@ -7,7 +7,7 @@ from pytz import timezone
 from html import escape
 import os
 
-TOKEN, ADMIN_ID, GROUP_ID, VIP_USERS_FILE, METHODS_FILE, user_processes = '7565078147:AAESGhIevlH3c0wpqYJpazOh4yAB6vyaVYY', 5582437613, -1002433677966, 'vip_users.json', 'methods.json', {}
+TOKEN, ADMIN_ID, GROUP_ID, VIP_USERS_FILE, METHODS_FILE, user_processes = '7565078147:AAESGhIevlH3c0wpqYJpazOh4yAB6vyaVYY', 7371969470, -1002411881962, 'vip_users.json', 'methods.json', {}
 
 # Load and save JSON helpers
 def load_json(file): return json.load(open(file, 'r')) if os.path.exists(file) else (save_json(file, {}) or {})
@@ -66,7 +66,7 @@ async def delete_method(update, context, methods_data):
 # Attack method command
 async def attack_method(update, context, methods_data, vip_users): 
     user_id, chat_id = update.message.from_user.id, update.message.chat.id
-    if chat_id != GROUP_ID: return await update.message.reply_text("Bạn không có quyền sử dụng methods [ADMIN] Liên hệ [@jonhhaha 👑]")
+    if chat_id != GROUP_ID: return await update.message.reply_text("Bạn không có quyền sử dụng methods [ADMIN] Liên hệ [@ATTACKBONET 👑]")
     if user_id in user_processes and user_processes[user_id].returncode is None: return await update.message.reply_text("Đang có cuộc Tiến trình đang chạy.")
     if len(context.args) < 2: return await update.message.reply_text("Cách sử dụng: /attack <method_name> <url> [time]")
     
@@ -75,7 +75,7 @@ async def attack_method(update, context, methods_data, vip_users):
     if method_name not in methods_data: return await update.message.reply_text("Không tìm thấy phương thức.")
     
     method = methods_data[method_name]
-    if method['visibility'] == 'ADMIN' and user_id != ADMIN_ID and user_id not in vip_users: return await update.message.reply_text("Bạn không có quyền sử dụng methods [ADMIN] Liên hệ [@jonhhaha👑]")
+    if method['visibility'] == 'ADMIN' and user_id != ADMIN_ID and user_id not in vip_users: return await update.message.reply_text("Bạn không có quyền sử dụng methods [ADMIN] Liên hệ [@ATTACKBONET👑]")
     
     attack_time = method['time']
     if user_id == ADMIN_ID and len(context.args) > 2: 
@@ -134,7 +134,7 @@ async def manage_vip_user(update, context, vip_users, action):
 
 # Help command
 async def help_message(update, context):
-    await update.message.reply_text("[👑Owner👑@jonhhaha] Buy BOT theo Tuần/Tháng Build BOT server riêng biệt contact @jonhhaha @yeuem111233:**\n\n"
+    await update.message.reply_text("[👑Owner👑@ATTACKBONET] Buy BOT theo Tuần/Tháng Build BOT server riêng biệt contact @ATTACKBONET:**\n\n"
         "/attack tên-methods https://trangwebcuaban.com\n"
         "/methods: Xem danh sách phương thức hiện có.\n"
         "/add <method_name> <url> timeset <time> [admin/vip]: Thêm phương thức ATTACKER.\n"
